@@ -8,12 +8,17 @@ async function main() {
   const balance = await deployer.provider.getBalance(deployer.address);
   console.log("Account balance:", balance.toString());
 
+  console.log("Getting contract factory...");
   const SimpleStorage = await hre.ethers.getContractFactory("SimpleStorage");
+  console.log("Contract factory:", SimpleStorage);
+
+  console.log("Deploying contract...");
   const simpleStorage = await SimpleStorage.deploy();
 
-  await simpleStorage.deployed();
+  // Wait for the deployment to be mined
+  await simpleStorage.waitForDeployment();
 
-  console.log("SimpleStorage deployed to:", simpleStorage.address);
+  console.log("SimpleStorage deployed to:", simpleStorage.target);
 }
 
 main()
@@ -22,6 +27,8 @@ main()
     console.error(error);
     process.exit(1);
   });
+
+
 
 
 
