@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ethers, BrowserProvider } from 'ethers';
 import SimpleStorage from './artifacts/contracts/SimpleStorage.sol/SimpleStorage.json';
 
-const simpleStorageAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const simpleStorageAddress = "YOUR_DEPLOYED_CONTRACT_ADDRESS";
 
 function App() {
   const [value, setValue] = useState('');
